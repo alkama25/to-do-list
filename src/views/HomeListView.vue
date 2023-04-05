@@ -3,14 +3,12 @@
     <div>
       <CompletedListItems></CompletedListItems>
       <TodoListItems></TodoListItems>
+      <router-view></router-view>
     </div>
-
-    <AddTodo></AddTodo>
   </main>
 </template>
 
 <script setup lang="ts">
 import CompletedListItems from '../components/CompletedListItems.vue'
 import TodoListItems from '../components/TodoListItems.vue'
-import AddTodo from '../components/AddTodo.vue'
 </script>

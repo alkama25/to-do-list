@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import TodoItem from './TodoItem.vue'
-import ChevronDown from './icons/IconChevronDown.vue'
-</script>
-
 <template>
   <main class="border-b border-chrome pb-4">
     <div class="flex items-center my-3">
@@ -15,3 +10,8 @@ import ChevronDown from './icons/IconChevronDown.vue'
     </div>
   </main>
 </template>
+
+<script setup lang="ts">
+import TodoItem from './TodoItem.vue'
+import ChevronDown from './icons/IconChevronDown.vue'
+</script>

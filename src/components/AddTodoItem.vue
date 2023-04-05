@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center mt-auto pb-20">
-    <TDInput placeholder="Add note" class="flex-1"></TDInput>
+    <TDInput placeholder="Add note" class="flex-1" :disabled="false"></TDInput>
     <TDButton type="primary" label="Add Item" class="pl-2.5"></TDButton>
   </div>
 </template>
