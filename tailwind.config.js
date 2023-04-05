@@ -13,12 +13,12 @@ module.exports = {
       gray: {
         DEFAULT: '#BBBBBB',
         light: '#CCCCCC',
-        dark: '#AAAAAA',
+        dark: '#AAAAAA'
       },
       blue: {
         DEFAULT: '#0080FF',
         light: '#41A0FF',
-        dark: '#005FBC',
+        dark: '#005FBC'
       }
     },
     fontSize: {
@@ -28,5 +28,6 @@ module.exports = {
       xl: '28px'
     }
   },
+ 
   plugins: []
 }

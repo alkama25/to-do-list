@@ -17,7 +17,8 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/BacklogListView.vue')
     }
-  ]
+  ],
+  linkActiveClass: 'border-b-4 pb-4 border-blue text-black',
 })
 
 export default router
