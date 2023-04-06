@@ -1,10 +1,29 @@
 <template>
   <div class="flex items-center mt-auto pb-20">
-    <TDInput placeholder="Add note" class="flex-1" :disabled="false"></TDInput>
-    <TDButton type="primary" label="Add Item" class="pl-2.5"></TDButton>
+    <TDInput class="flex-1" :value="todoText" @blur="updateTodoText"></TDInput>
+    <TDButton
+      label="Add Item"
+      class="pl-2.5"
+      @action="addTask"
+      :disabled="isButtonDisabled"
+    ></TDButton>
   </div>
 </template>
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import TDButton from '../components/TDButton.vue'
 import TDInput from '../components/TDInput.vue'
+import { useTodoListStore } from '@/stores/index'
+
+const route = useRoute()
+const store = useTodoListStore()
+let todoText = ref<string>('')
+const isButtonDisabled = computed<boolean>(() => !todoText.value.length)
+
+const updateTodoText = (newTodoText: string) => (todoText.value = newTodoText)
+const addTask = (): void => {
+  store.addToList(todoText.value, route.path)
+  todoText.value = ''
+}
 </script>

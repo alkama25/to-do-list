@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      class="focus:outline-none border flex cursor-pointer flex-row rounded px-4 py-3 text-sm"
+      class="focus:outline-none border flex flex-row rounded px-4 py-3 text-sm"
       :class="buttonClasses"
       @click.prevent="$emit('action')"
     >
@@ -12,16 +12,22 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps<{
-  label: string,
-  type: string,
-  action: Function
-}>()
+export interface IProps {
+  buttonType?: 'primary' | 'secondary'
+  label?: string,
+  disabled?:boolean
+}
+
+const props = withDefaults(defineProps<IProps>(), {
+  buttonType: 'primary'
+})
+
 const buttonClasses = computed(() => {
-  let classes = {
-    'bg-blue border-blue-dark text-white': props.type === 'primary',
-    'bg-gray-light border-gray text-white': props.type === 'disabled',
-    'bg-white border-gray-light text-blue': props.type === 'disabled'
+  const classes = {
+    'bg-blue border-blue-dark text-white cursor-pointer': props.buttonType === 'primary',
+    'bg-gray-light border-gray text-white cursor-default pointer-events-none':
+      props.disabled,
+    'bg-white border-gray-light text-blue cursor-pointer': props.buttonType === 'secondary'
   }
   return classes
 })
