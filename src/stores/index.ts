@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import type { Todo } from '/types.ts'
 import { TodoStatus } from '@/enums'
 import { v4 as uuidv4 } from 'uuid'
+import { useFormattedDate } from '@/composables/formatDate'
 
 interface State {
   todoListItems: Todo[]
@@ -21,7 +22,7 @@ export const useTodoListStore = defineStore('todoList', {
   },
   actions: {
     addToList(text: string, path: string): void {
-      const newTodo: Todo = { id: uuidv4(), text: text, createdDate: new Date() }
+      const newTodo: Todo = { id: uuidv4(), text: text, createdDate: useFormattedDate(new Date()) }
       this.todoListItems.push({
         ...newTodo,
         status: path === '/backlog' ? TodoStatus.Backlog : TodoStatus.Pending
