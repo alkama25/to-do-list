@@ -4,7 +4,7 @@
       <TodoItem
         :list-item="item"
         class="space-y-4"
-        @on-change-value="useTodoListStore().moveTodo(item, 'completed')"
+        @on-change-value="useTodoListStore().changeTodoStatus({ ...item, status: TodoStatus.Completed })"
       ></TodoItem>
     </div>
   </main>
@@ -14,6 +14,7 @@
 import { computed } from 'vue'
 import TodoItem from './TodoItem.vue'
 import { useTodoListStore } from '@/stores/index'
+import { TodoStatus } from '../enums'
 
 const listItems = computed(() => useTodoListStore().todoList)
 </script>

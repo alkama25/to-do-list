@@ -11,19 +11,56 @@
       <div class="ml-2">
         <p
           class="text-base"
-          :class="props.listItem.completed ? 'text-gray-dark line-through' : 'text-black'"
+          :class="
+            props.listItem.status === TodoStatus.Completed
+              ? 'text-gray-dark line-through'
+              : 'text-black'
+          "
         >
           {{ props.listItem.text }}
         </p>
         <p class="text-xs text-gray-dark">{{ props.listItem.createdDate }}</p>
       </div>
     </div>
-    <EllipsisHorizontal v-if="props.listItem.pending"></EllipsisHorizontal>
+
+    <div class="relative cursor-pointer" v-if="props.listItem.status === TodoStatus.Pending">
+      <div
+        class="flex h-8 w-8 items-center justify-center text-gray-dark hover:text-black hover:rounded-full hover:bg-chrome"
+        tabindex="0"
+        @click.stop="isDropdownVisible = !isDropdownVisible"
+        @blur="isDropdownVisible = false"
+      >
+        <EllipsisHorizontal></EllipsisHorizontal>
+      </div>
+
+      <div
+        v-if="isDropdownVisible"
+        class="absolute right-0 z-10 mt-2 origin-top-left rounded bg-white border border-gray-light"
+      >
+        <div
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="option-menu"
+          v-for="(option, index) in todoActionItems"
+          :key="option.type"
+          :class="index !== todoActionItems.length - 1 ? 'border-b border-gray-light' : ''"
+        >
+          <a
+            class="w-max flex px-4 py-2 text-sm text-blue"
+            role="menuitem"
+            @mousedown.stop.prevent="option.action(props.listItem)"
+          >
+            {{ option.text }}
+          </a>
+        </div>
+      </div>
+    </div>
+
     <TDButton
-      v-if="props.listItem.backlog"
+      v-if="props.listItem.status === TodoStatus.Backlog"
       label="Move to List"
       button-type="secondary"
-      @action="useTodoListStore().moveTodo(props.listItem, 'pending')"
+      @action="store.changeTodoStatus({ ...props.listItem, status: TodoStatus.Pending })"
     ></TDButton>
   </div>
 </template>
@@ -33,7 +70,8 @@ import { ref } from 'vue'
 import EllipsisHorizontal from './icons/IconEllipsisHorizontal.vue'
 import TDButton from '../components/TDButton.vue'
 import { useTodoListStore } from '@/stores/index'
-import type { Todo } from '../types.ts'
+import type { Todo, TodoDropdownItem } from '../types'
+import { TodoStatus } from '../enums'
 
 const props = defineProps<{
   listItem: Todo
@@ -41,9 +79,24 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['onChangeValue'])
 
-const checked = ref<boolean>(props.listItem.completed ?? false)
-const onChange = (event: { target: { checked: boolean } }) => {
+const store = useTodoListStore()
+
+const checked = ref<boolean>(props.listItem.status === TodoStatus.Completed ?? false)
+const isDropdownVisible = ref<boolean>(false)
+const onChange = (event: MouseEvent) => {
   checked.value = event.target.checked
   emit('onChangeValue', checked.value)
 }
+const todoActionItems = ref<TodoDropdownItem[]>([
+  {
+    text: 'Delete',
+    type: 'delete',
+    action: () => store.deleteTodo(props.listItem)
+  },
+  {
+    text: 'Move to Backlog',
+    type: 'backlog',
+    action: () => store.changeTodoStatus({ ...props.listItem, status: TodoStatus.Backlog })
+  }
+])
 </script>

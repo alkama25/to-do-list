@@ -8,7 +8,7 @@
     <div class="space-y-4 mt-4" v-for="item in listItems" :key="item.id">
       <TodoItem
         :list-item="item"
-        @on-change-value="useTodoListStore().moveTodo(item, 'completed')"
+        @on-change-value="useTodoListStore().changeTodoStatus({ ...item, status: TodoStatus.Completed })"
       ></TodoItem>
     </div>
     <router-view></router-view>
@@ -20,6 +20,7 @@ import TDButton from '../components/TDButton.vue'
 import TDInput from '../components/TDInput.vue'
 import TodoItem from '../components/TodoItem.vue'
 import { useTodoListStore } from '@/stores/index'
+import { TodoStatus } from '../enums'
 
 const listItems = computed(() => useTodoListStore().backlogList)
 </script>

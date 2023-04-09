@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-5 text-xl font-bold">
-    <RouterLink to="/" class="text-gray">To Do List</RouterLink>
-    <RouterLink to="/backlog" class="ml-20 text-gray">Backlog</RouterLink>
+  <div class="mt-5 text-xl text-gray font-bold">
+    <RouterLink to="/">To Do List</RouterLink>
+    <RouterLink to="/backlog" class="ml-20">Backlog</RouterLink>
     <div class="border-b border-chrome my-3"></div>
   </div>
   <router-view></router-view>

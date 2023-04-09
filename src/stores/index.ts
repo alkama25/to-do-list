@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import type { Todo } from './types.ts'
+import type { Todo } from '/types.ts'
+import { TodoStatus } from '@/enums'
 import { v4 as uuidv4 } from 'uuid'
 
 interface State {
@@ -11,36 +12,28 @@ export const useTodoListStore = defineStore('todoList', {
     todoListItems: []
   }),
   getters: {
-    backlogList: (state: Todo): Todo[] => state.todoListItems.filter((todo: Todo) => todo.backlog),
-    todoList: (state: Todo): Todo[] => state.todoListItems.filter((todo: Todo) => todo.pending),
+    backlogList: (state: Todo): Todo[] =>
+      state.todoListItems.filter((todo: Todo) => todo.status === TodoStatus.Backlog),
+    todoList: (state: Todo): Todo[] =>
+      state.todoListItems.filter((todo: Todo) => todo.status === TodoStatus.Pending),
     completeList: (state: Todo): Todo[] =>
-      state.todoListItems.filter((todo: Todo) => todo.completed)
+      state.todoListItems.filter((todo: Todo) => todo.status === TodoStatus.Completed)
   },
   actions: {
-    addToList(text: string, path: string) : void {
+    addToList(text: string, path: string): void {
       const newTodo: Todo = { id: uuidv4(), text: text, createdDate: new Date() }
       this.todoListItems.push({
         ...newTodo,
-        backlog: path === '/backlog',
-        pending: path !== '/backlog',
-        completed: false
+        status: path === '/backlog' ? TodoStatus.Backlog : TodoStatus.Pending
       })
     },
-    moveTodo(
-      todoItem: Todo,
-      status: 'completed' | 'pending' | 'backlog',
-    ): void {
-      let todoListItemsCopy = [...this.todoListItems]
-      const index = todoListItemsCopy.findIndex((todo) => todo.id === todoItem.id)
-      if (index !== -1)
-        todoListItemsCopy[index] = {
-          ...todoListItemsCopy[index],
-          completed: status === 'completed',
-          backlog: status === 'backlog',
-          pending: status === 'pending'
-        }
-
-      this.todoListItems = [...todoListItemsCopy]
+    changeTodoStatus(todoItem: Todo): void {
+      const todoToUpdate = this.todoListItems.find((todo) => todo.id === todoItem.id)
+      if (todoToUpdate) Object.assign(todoToUpdate, { ...todoItem })
+    },
+    deleteTodo(todoItem: Todo): void {
+      const index = this.todoListItems.findIndex((todo) => todo.id === todoItem.id)
+      if (index !== -1) this.todoListItems.splice(index, 1)
     }
   }
 })

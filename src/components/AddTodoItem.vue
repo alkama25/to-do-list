@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center mt-auto pb-20">
-    <TDInput class="flex-1" :value="todoText" @blur="updateTodoText"></TDInput>
+    <TDInput class="flex-1" :value="todoText" @onInput="updateTodoText"></TDInput>
     <TDButton
       label="Add Item"
       class="pl-2.5"
@@ -17,13 +17,12 @@ import TDInput from '../components/TDInput.vue'
 import { useTodoListStore } from '@/stores/index'
 
 const route = useRoute()
-const store = useTodoListStore()
 let todoText = ref<string>('')
 const isButtonDisabled = computed<boolean>(() => !todoText.value.length)
 
 const updateTodoText = (newTodoText: string) => (todoText.value = newTodoText)
 const addTask = (): void => {
-  store.addToList(todoText.value, route.path)
+  useTodoListStore().addToList(todoText.value, route.path)
   todoText.value = ''
 }
 </script>

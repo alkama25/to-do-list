@@ -8,7 +8,7 @@
     <div class="space-y-4" v-for="item in listItems" :key="item.id">
       <TodoItem
         :list-item="item"
-        @on-change-value="useTodoListStore().moveTodo(item, 'pending')"
+        @on-change-value="useTodoListStore().changeTodoStatus({ ...item, status: TodoStatus.Pending })"
       ></TodoItem>
     </div>
   </main>
@@ -19,6 +19,7 @@ import { computed } from 'vue'
 import TodoItem from './TodoItem.vue'
 import ChevronDown from './icons/IconChevronDown.vue'
 import { useTodoListStore } from '@/stores/index'
+import { TodoStatus } from '../enums'
 
 const listItems = computed(() => useTodoListStore().completeList)
 </script>
