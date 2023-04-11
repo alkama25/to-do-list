@@ -19,7 +19,7 @@
         >
           {{ props.listItem.text }}
         </p>
-        <p class="text-xs text-gray-dark">{{ props.listItem.createdDate }}</p>
+        <p class="text-xs text-gray-dark">{{ useFormattedDate(props.listItem.createdDate) }}</p>
       </div>
     </div>
 
@@ -72,6 +72,7 @@ import TDButton from '../components/TDButton.vue'
 import { useTodoListStore } from '@/stores/index'
 import type { Todo, TodoDropdownItem } from '../types'
 import { TodoStatus } from '../enums'
+import { useFormattedDate } from '../composables/formatDate'
 
 const props = defineProps<{
   listItem: Todo
@@ -83,8 +84,8 @@ const store = useTodoListStore()
 
 const checked = ref<boolean>(props.listItem.status === TodoStatus.Completed ?? false)
 const isDropdownVisible = ref<boolean>(false)
-const onChange = (event: MouseEvent) => {
-  checked.value = event.target.checked
+const onChange = (event: Event) => {
+  checked.value = (event.target as HTMLInputElement).checked
   emit('onChangeValue', checked.value)
 }
 const todoActionItems = ref<TodoDropdownItem[]>([

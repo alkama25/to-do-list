@@ -3,8 +3,8 @@
     <input
       class="w-full rounded px-4 py-3 text-sm border border-gray-light focus:border-gray-dark outline-none"
       :placeholder="props.placeholder"
-      v-model="inputValue"
-      @input="(event) => $emit('onInput', (event.target as HTMLInputElement).value)"
+      :value="inputValue"
+      @input="onInput"
     />
   </div>
 </template>
@@ -15,7 +15,13 @@ const props = defineProps<{
   placeholder?: string
   value: string
 }>()
+
+const emit = defineEmits(['onInput'])
 const inputValue = ref<string>(props.value)
+const onInput = (event: Event) => {
+  inputValue.value = (event.target as HTMLInputElement).value
+  emit('onInput', inputValue.value)
+}
 watch(
   () => props.value,
   (value) => (inputValue.value = value)
