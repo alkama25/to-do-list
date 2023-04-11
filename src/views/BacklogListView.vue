@@ -25,20 +25,23 @@
         "
       ></TDButton>
     </div>
-    <div class="space-y-4 mt-4" v-for="item in listItems" :key="item.id">
-      <TodoItem
-        :list-item="item"
-        @on-change-value="store.changeTodoStatus({ ...item, status: TodoStatus.Completed })"
-      ></TodoItem>
-    </div>
+    <CustomTransition>
+      <div class="space-y-4 mt-4" v-for="item in listItems" :key="item.id">
+        <TodoItem
+          :list-item="item"
+          @on-change-value="store.changeTodoStatus({ ...item, status: TodoStatus.Completed })"
+        ></TodoItem>
+      </div>
+    </CustomTransition>
     <router-view></router-view>
   </main>
 </template>
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, Transition } from 'vue'
 import TDButton from '../components/TDButton.vue'
 import TDInput from '../components/TDInput.vue'
 import TodoItem from '../components/TodoItem.vue'
+import CustomTransition from '../components/CustomTransition.vue'
 import { useTodoListStore } from '@/stores/index'
 import type { Todo, SortParams } from '../types'
 import { TodoStatus, SortOrder } from '../enums'

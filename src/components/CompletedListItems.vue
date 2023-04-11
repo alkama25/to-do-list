@@ -18,15 +18,17 @@
     </div>
 
     <div v-if="isCompletedItemsVisible">
-      <TodoItem
-        class="space-y-4"
-        v-for="item in completedListItems"
-        :key="item.id"
-        :list-item="item"
-        @on-change-value="
-          useTodoListStore().changeTodoStatus({ ...item, status: TodoStatus.Pending })
-        "
-      ></TodoItem>
+      <CustomTransition>
+        <TodoItem
+          class="space-y-4"
+          v-for="item in completedListItems"
+          :key="item.id"
+          :list-item="item"
+          @on-change-value="
+            useTodoListStore().changeTodoStatus({ ...item, status: TodoStatus.Pending })
+          "
+        ></TodoItem>
+      </CustomTransition>
     </div>
   </main>
 </template>
@@ -35,6 +37,7 @@
 import { ref, computed } from 'vue'
 import TodoItem from './TodoItem.vue'
 import TDIcon from './TDIcon.vue'
+import CustomTransition from '../components/CustomTransition.vue'
 import { useTodoListStore } from '@/stores/index'
 import type { Todo } from '../types'
 import { TodoStatus } from '../enums'
