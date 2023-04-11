@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router'
 import HomeListView from '../views/HomeListView.vue'
 import BacklogListView from '../views/BacklogListView.vue'
 import AddTodo from '../components/AddTodoItem.vue'
+import PageNotFound from '../components/PageNotFound.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,6 +13,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
+        name: 'add-todo',
         component: AddTodo
       }
     ]
@@ -23,9 +25,15 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
+        name: 'add-backlog',
         component: AddTodo
       }
     ]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: PageNotFound
   }
 ]
 
