@@ -49,7 +49,7 @@ const searchTerm = ref<string>('')
 const isSortingEnabled = ref<boolean>(false)
 const sortedList = ref<Todo[]>([])
 
-const listItems = computed((): Todo[] => {
+const listItems = computed<Todo[]>(() => {
   if (isSortingEnabled.value) return sortedList.value
   if (searchTerm.value.length === 0) return store.backlogList
   return store.backlogList.filter((todo: Todo) =>
