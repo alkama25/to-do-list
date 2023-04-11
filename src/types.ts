@@ -18,3 +18,7 @@ export interface SortParams {
   property: keyof Todo
   sortOrder: SortOrder
 }
+
+export interface IconMap {
+  [key: string]: string
+}

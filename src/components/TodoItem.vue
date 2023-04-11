@@ -30,7 +30,7 @@
         @click.stop="isDropdownVisible = !isDropdownVisible"
         @blur="isDropdownVisible = false"
       >
-        <EllipsisHorizontal></EllipsisHorizontal>
+        <TDIcon name="ellipsis-horizontal"></TDIcon>
       </div>
 
       <div
@@ -67,9 +67,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import EllipsisHorizontal from './icons/IconEllipsisHorizontal.vue'
+import TDIcon from './TDIcon.vue'
 import TDButton from '../components/TDButton.vue'
-import { useTodoListStore } from '@/stores/index'
+import { useTodoListStore } from '../stores/index'
 import type { Todo, TodoDropdownItem } from '../types'
 import { TodoStatus } from '../enums'
 import { useFormattedDate } from '../composables/formatDate'
