@@ -46,14 +46,15 @@ npm run test:unit
 ```
 ### Tech Stack
 
-Vue 3
-Vite
-Vue Router
-Tailwind CSS
-TypeScript
-Pinia
-SCSS
-Semantic HTML
+
+Vue 3 <br>
+Vite <br>
+Vue Router <br>
+Tailwind CSS <br>
+TypeScript <br>
+Pinia <br>
+SCSS <br>
+Semantic HTML <br>
 
 ### Description
 
@@ -77,11 +78,11 @@ All the routes are listed in the router folder with index.ts file.
 
 Separate unit tests for components and stores are under(__tests__) folder in respective directories.
 
-The application allows to add the todo, which is initially in pending state.
-The user can either - 
-    1. Mark it as complete
-    2. Delete it
-    3. Or can move it to backlog and vice-versa.
+The application allows to add the todo, which is initially in pending state. <br>
+The user can either -  <br>
+    1. Mark it as complete <br>
+    2. Delete it <br>
+    3. Or can move it to backlog and vice-versa. <br>
 
 While navigating to the backlog todos, there is also searching and sorting functionality implemented, to allow users to search and sort the todos.
 
