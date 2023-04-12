@@ -1,14 +1,16 @@
 <template>
-  <section class="py-4" v-if="listItems.length">
+  <section :class="listItems.length ? 'py-4' : ''">
     <CustomTransition>
-      <TodoItem
-        v-for="item in listItems"
-        :key="item.id"
-        :list-item="item"
-        @on-change-value="
-          useTodoListStore().changeTodoStatus({ ...item, status: TodoStatus.Completed })
-        "
-      ></TodoItem>
+      <template v-if="listItems.length">
+        <TodoItem
+          v-for="item in listItems"
+          :key="item.id"
+          :list-item="item"
+          @on-change-value="
+            useTodoListStore().changeTodoStatus({ ...item, status: TodoStatus.Completed })
+          "
+        ></TodoItem>
+      </template>
     </CustomTransition>
   </section>
 </template>

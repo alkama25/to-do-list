@@ -11,8 +11,8 @@
       <p class="text-gray-light text-base ml-3">{{ completedListItems.length }} Done</p>
     </div>
 
-    <div v-if="isCompletedItemsVisible">
-      <CustomTransition>
+    <CustomTransition>
+      <template v-if="isCompletedItemsVisible">
         <TodoItem
           class="space-y-4"
           v-for="item in completedListItems"
@@ -22,8 +22,8 @@
             useTodoListStore().changeTodoStatus({ ...item, status: TodoStatus.Pending })
           "
         ></TodoItem>
-      </CustomTransition>
-    </div>
+      </template>
+    </CustomTransition>
   </section>
   <div
     v-if="completedListItems.length"

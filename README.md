@@ -1,6 +1,6 @@
 # to-do-list
 
-This template should help get you started developing with Vue 3 in Vite.
+Simple to-do-list application that allows user to add tasks, mark them as complete, move to backlog or delete them.
 
 ## Recommended IDE Setup
 
@@ -44,9 +44,47 @@ npm run build
 ```sh
 npm run test:unit
 ```
+### Tech Stack
 
-### Lint with [ESLint](https://eslint.org/)
+Vue 3
+Vite
+Vue Router
+Tailwind CSS
+TypeScript
+Pinia
+SCSS
+Semantic HTML
 
-```sh
-npm run lint
-```
+### Description
+
+Pinia is used as a state management library to handle the todo items in different sections.
+
+Vue Router is used to manage routes while clicking on navigation links. 
+
+Tailwind CSS is used to create the layout and some custom configurations are defined in tailwind.config.js  as per the styleguide provided.
+
+TypeScript and vue composition API is used for creating the components.
+
+Common types and enums are stored in separate files.
+
+Resources folder is created to store all the svg icons used in the application.
+
+Some common UI components(such as Button, Input, Icon) are located in common folder inside components directory.
+
+Separate views folder handle the rendering of all the views as per the url, including the 404 Page.
+
+All the routes are listed in the router folder with index.ts file.
+
+Separate unit tests for components and stores are under(__tests__) folder in respective directories.
+
+The application allows to add the todo, which is initially in pending state.
+The user can either - 
+    1. Mark it as complete
+    2. Delete it
+    3. Or can move it to backlog and vice-versa.
+
+While navigating to the backlog todos, there is also searching and sorting functionality implemented, to allow users to search and sort the todos.
+
+Each todo is created with a text, unique ID, status and created date.
+
+Transition property of Vue is used to provide transition animations while adding, deleting or moving a todo item.
