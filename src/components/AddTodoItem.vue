@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center mt-auto pb-20">
+  <div class="flex items-center mt-2 pb-20">
     <TDInput
       class="flex-1"
       :value="todoText"

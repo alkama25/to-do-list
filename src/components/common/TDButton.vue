@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      class="focus:outline-none border flex flex-row rounded text-sm"
+      class="focus:outline-none border flex flex-row rounded font-medium"
       :class="buttonClasses"
       @click.prevent="$emit('action')"
     >
@@ -29,8 +29,8 @@ const buttonClasses = computed(() => {
     'bg-blue border-blue-dark text-white cursor-pointer': props.buttonType === 'primary',
     'bg-gray-light border-gray text-white cursor-default pointer-events-none': props.disabled,
     'bg-white border-gray-light text-blue cursor-pointer': props.buttonType === 'secondary',
-    'py-3 px-4': props.size === 'large',
-    'py-2 px-3': props.size === 'small'
+    'py-3 px-4 text-base': props.size === 'large',
+    'py-2 px-3 text-sm': props.size === 'small'
   }
   return classes
 })

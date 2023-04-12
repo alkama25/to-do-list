@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-col justify-between h-full">
+  <main class="flex flex-col justify-between m-4 sm:m-0">
     <CompletedListItems></CompletedListItems>
     <TodoListItems></TodoListItems>
     <router-view></router-view>

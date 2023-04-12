@@ -1,7 +1,7 @@
 <template>
-  <div class="relative mt-1 rounded-md">
+  <div class="relative rounded-md">
     <input
-      class="w-full rounded px-4 py-3 text-sm border border-gray-light focus:border-gray-dark outline-none"
+      class="w-full rounded px-4 py-3 text-base border border-gray-light focus:border-gray-dark outline-none"
       :placeholder="props.placeholder"
       :value="inputValue"
       @input="onInput"

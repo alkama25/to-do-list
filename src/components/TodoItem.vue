@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-between">
-    <div class="flex items-start">
+  <div class="flex justify-between items-center">
+    <div class="flex items-start py-2">
       <input
         type="checkbox"
         v-model="checked"
@@ -49,12 +49,12 @@
           v-for="(option, index) in todoActionItems"
           :key="option.type"
           :class="index !== todoActionItems.length - 1 ? 'border-b border-gray-light' : ''"
+          @mousedown.stop.prevent="option.action(props.listItem)"
         >
           <a
             class="w-max flex px-4 py-2 text-sm text-blue"
             role="menuitem"
             data-test-id="dropdown-menu-item"
-            @mousedown.stop.prevent="option.action(props.listItem)"
           >
             {{ option.text }}
           </a>

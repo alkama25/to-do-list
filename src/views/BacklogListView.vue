@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <main class="m-4 sm:m-0 lg:m-0">
     <div
-      class="flex items-center justify-between"
+      class="flex items-center justify-between py-2 flex-wrap sm:flex-no-wrap"
       v-if="listItems.length >= 2 || searchTerm.length"
     >
       <TDInput
@@ -10,24 +10,25 @@
         :value="searchTerm"
         @onInput="onSearchTermChange"
       ></TDInput>
-      <TDButton
-        type="primary"
-        label="Sort by Name"
-        class="pl-2.5"
-        @action="sortTodoList({ list: listItems, property: 'text', sortOrder: SortOrder.ASC })"
-      ></TDButton>
-      <TDButton
-        type="primary"
-        label="Sort by Date"
-        class="pl-2.5"
-        @action="
-          sortTodoList({ list: listItems, property: 'createdDate', sortOrder: SortOrder.DESC })
-        "
-      ></TDButton>
+      <div class="flex items-center mt-2 xs:mt-0">
+        <TDButton
+          type="primary"
+          label="Sort by Name"
+          class="pl-2.5 lg:pl-5"
+          @action="sortTodoList({ list: listItems, property: 'text', sortOrder: SortOrder.ASC })"
+        ></TDButton>
+        <TDButton
+          type="primary"
+          label="Sort by Date"
+          class="pl-2.5 lg:pl-5"
+          @action="
+            sortTodoList({ list: listItems, property: 'createdDate', sortOrder: SortOrder.DESC })
+          "
+        ></TDButton>
+      </div>
     </div>
     <CustomTransition>
       <TodoItem
-        class="mt-4"
         v-for="item in listItems"
         :key="item.id"
         :list-item="item"

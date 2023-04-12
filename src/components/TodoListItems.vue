@@ -5,7 +5,6 @@
         v-for="item in listItems"
         :key="item.id"
         :list-item="item"
-        class="space-y-4"
         @on-change-value="
           useTodoListStore().changeTodoStatus({ ...item, status: TodoStatus.Completed })
         "

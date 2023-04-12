@@ -1,11 +1,5 @@
 <template>
-  <section
-    v-if="completedListItems.length"
-    :class="{
-      'border-b border-chrome': todoItems.length,
-      'pb-4': todoItems.length && isCompletedItemsVisible
-    }"
-  >
+  <section v-if="completedListItems.length">
     <div
       class="flex items-center my-3 cursor-pointer"
       @click="isCompletedItemsVisible = !isCompletedItemsVisible"
@@ -31,6 +25,13 @@
       </CustomTransition>
     </div>
   </section>
+  <div
+    v-if="completedListItems.length"
+    :class="{
+      'border-b border-chrome -mx-4 sm:-mx-0 ': todoItems.length,
+      'pb-4': todoItems.length && isCompletedItemsVisible
+    }"
+  ></div>
 </template>
 
 <script setup lang="ts">
