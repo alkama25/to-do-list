@@ -22,10 +22,13 @@
           label="Sort by Date"
           class="pl-2.5 lg:pl-5"
           @action="
-            sortTodoList({ list: listItems, property: 'createdDate', sortOrder: SortOrder.DESC })
+            sortTodoList({ list: listItems, property: 'createdDate', sortOrder: SortOrder.ASC })
           "
         ></TDButton>
       </div>
+    </div>
+    <div v-if="listItems.length === 0 && searchTerm.length" class="text-black text-base">
+      No search results found. Please try again.
     </div>
     <CustomTransition>
       <TodoItem
@@ -61,7 +64,10 @@ const listItems = computed<Todo[]>(() => {
     todo.text.toLowerCase().includes(searchTerm.value)
   )
 })
-const onSearchTermChange = (searchString: string) => (searchTerm.value = searchString)
+const onSearchTermChange = (searchString: string) => {
+  searchTerm.value = searchString
+  isSortingEnabled.value = false
+}
 
 const sortTodoList = (params: SortParams) => {
   const formattedListItems = listItems.value.map((todo: Todo) => ({
