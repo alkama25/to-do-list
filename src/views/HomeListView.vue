@@ -1,10 +1,8 @@
 <template>
   <main class="flex flex-col justify-between h-full">
-    <div>
-      <CompletedListItems></CompletedListItems>
-      <TodoListItems></TodoListItems>
-      <router-view></router-view>
-    </div>
+    <CompletedListItems></CompletedListItems>
+    <TodoListItems></TodoListItems>
+    <router-view></router-view>
   </main>
 </template>
 

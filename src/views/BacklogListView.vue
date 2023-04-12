@@ -26,12 +26,13 @@
       ></TDButton>
     </div>
     <CustomTransition>
-      <div class="space-y-4 mt-4" v-for="item in listItems" :key="item.id">
-        <TodoItem
-          :list-item="item"
-          @on-change-value="store.changeTodoStatus({ ...item, status: TodoStatus.Completed })"
-        ></TodoItem>
-      </div>
+      <TodoItem
+        class="mt-4"
+        v-for="item in listItems"
+        :key="item.id"
+        :list-item="item"
+        @on-change-value="store.changeTodoStatus({ ...item, status: TodoStatus.Completed })"
+      ></TodoItem>
     </CustomTransition>
     <router-view></router-view>
   </main>

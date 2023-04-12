@@ -1,5 +1,5 @@
 <template>
-  <main
+  <section
     v-if="completedListItems.length"
     :class="{
       'border-b border-chrome': todoItems.length,
@@ -30,7 +30,7 @@
         ></TodoItem>
       </CustomTransition>
     </div>
-  </main>
+  </section>
 </template>
 
 <script setup lang="ts">

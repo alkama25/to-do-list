@@ -66,6 +66,7 @@
       v-if="props.listItem.status === TodoStatus.Backlog"
       label="Move to List"
       button-type="secondary"
+      size="small"
       @action="store.changeTodoStatus({ ...props.listItem, status: TodoStatus.Pending })"
     ></TDButton>
   </div>
