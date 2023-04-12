@@ -1,4 +1,4 @@
-import type { IconMap } from '../types'
+import type { IconMap } from '@/types'
 
 export const icons: IconMap = {
   'chevron-down': 'M19.5 8.25l-7.5 7.5-7.5-7.5',

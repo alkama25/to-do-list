@@ -1,4 +1,4 @@
-import { SortOrder } from '../enums'
+import { SortOrder } from '@/enums'
 import type { Todo, SortParams } from '@/types'
 
 export function sortByProperty<T>(params: SortParams): Todo[] {

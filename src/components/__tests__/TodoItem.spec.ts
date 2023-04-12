@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
-import TodoItem from '../TodoItem.vue'
+import TodoItem from '@/components/TodoItem.vue'
 import { TodoStatus } from '@/enums'
 
 describe('TodoItem.vue', () => {

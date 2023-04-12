@@ -36,12 +36,12 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import TodoItem from './TodoItem.vue'
-import TDIcon from '../components/common/TDIcon.vue'
-import CustomTransition from '../components/common/CustomTransition.vue'
+import TodoItem from '@/components/TodoItem.vue'
+import TDIcon from '@/components/common/TDIcon.vue'
+import CustomTransition from '@/components/common/CustomTransition.vue'
 import { useTodoListStore } from '@/stores/index'
-import type { Todo } from '../types'
-import { TodoStatus } from '../enums'
+import type { Todo } from '@/types'
+import { TodoStatus } from '@/enums'
 
 const isCompletedItemsVisible = ref<boolean>(true)
 const todoItems = computed<Todo[]>(() => useTodoListStore().todoList)

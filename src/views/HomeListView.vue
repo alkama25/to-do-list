@@ -7,6 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import CompletedListItems from '../components/CompletedListItems.vue'
-import TodoListItems from '../components/TodoListItems.vue'
+import CompletedListItems from '@/components/CompletedListItems.vue'
+import TodoListItems from '@/components/TodoListItems.vue'
 </script>

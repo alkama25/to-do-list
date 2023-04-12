@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import HomeListView from '../views/HomeListView.vue'
-import BacklogListView from '../views/BacklogListView.vue'
-import AddTodo from '../components/AddTodoItem.vue'
-import PageNotFound from '../views/PageNotFound.vue'
+import HomeListView from '@/views/HomeListView.vue'
+import BacklogListView from '@/views/BacklogListView.vue'
+import AddTodo from '@/components/AddTodoItem.vue'
+import PageNotFound from '@/views/PageNotFound.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {

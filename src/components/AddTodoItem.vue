@@ -16,8 +16,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import TDButton from '../components/common/TDButton.vue'
-import TDInput from '../components/common/TDInput.vue'
+import TDButton from '@/components/common/TDButton.vue'
+import TDInput from '@/components/common/TDInput.vue'
 import { useTodoListStore } from '@/stores/index'
 
 const route = useRoute()

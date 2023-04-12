@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { Todo } from '/types.ts'
+import type { Todo } from '@/types'
 import { TodoStatus } from '@/enums'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -9,14 +9,14 @@ interface State {
 
 export const useTodoListStore = defineStore('todoList', {
   state: (): State => ({
-    todoListItems: []
+     todoListItems: []
   }),
   getters: {
-    backlogList: (state: Todo): Todo[] =>
+    backlogList: (state: State): Todo[] =>
       state.todoListItems.filter((todo: Todo) => todo.status === TodoStatus.Backlog),
-    todoList: (state: Todo): Todo[] =>
+    todoList: (state: State): Todo[] =>
       state.todoListItems.filter((todo: Todo) => todo.status === TodoStatus.Pending),
-    completeList: (state: Todo): Todo[] =>
+    completeList: (state: State): Todo[] =>
       state.todoListItems.filter((todo: Todo) => todo.status === TodoStatus.Completed)
   },
   actions: {
@@ -35,5 +35,6 @@ export const useTodoListStore = defineStore('todoList', {
       const index = this.todoListItems.findIndex((todo) => todo.id === todoItem.id)
       if (index !== -1) this.todoListItems.splice(index, 1)
     }
-  }
-})
+  },
+});
+

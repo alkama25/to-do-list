@@ -74,12 +74,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import TDIcon from '../components/common/TDIcon.vue'
-import TDButton from '../components/common/TDButton.vue'
-import { useTodoListStore } from '../stores/index'
-import type { Todo, TodoDropdownItem } from '../types'
-import { TodoStatus } from '../enums'
-import { useFormattedDate } from '../composables/formatDate'
+import TDIcon from '@/components/common/TDIcon.vue'
+import TDButton from '@/components/common/TDButton.vue'
+import { useTodoListStore } from '@/stores/index'
+import type { Todo, TodoDropdownItem } from '@/types'
+import { TodoStatus } from '@/enums'
+import { useFormattedDate } from '@/composables/formatDate'
 
 const props = defineProps<{
   listItem: Todo

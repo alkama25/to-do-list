@@ -15,11 +15,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import TodoItem from './TodoItem.vue'
-import CustomTransition from '../components/common/CustomTransition.vue'
+import TodoItem from '@/components/TodoItem.vue'
+import CustomTransition from '@/components/common/CustomTransition.vue'
 import { useTodoListStore } from '@/stores/index'
-import type { Todo } from '../types'
-import { TodoStatus } from '../enums'
+import type { Todo } from '@/types'
+import { TodoStatus } from '@/enums'
 
 const listItems = computed<Todo[]>(() => useTodoListStore().todoList)
 </script>

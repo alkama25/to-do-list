@@ -39,15 +39,15 @@
   </main>
 </template>
 <script setup lang="ts">
-import { ref, computed, watch, Transition } from 'vue'
-import TDButton from '../components/common/TDButton.vue'
-import TDInput from '../components/common/TDInput.vue'
-import TodoItem from '../components/TodoItem.vue'
-import CustomTransition from '../components/common/CustomTransition.vue'
+import { ref, computed, watch } from 'vue'
+import TDButton from '@/components/common/TDButton.vue'
+import TDInput from '@/components/common/TDInput.vue'
+import TodoItem from '@/components/TodoItem.vue'
+import CustomTransition from '@/components/common/CustomTransition.vue'
 import { useTodoListStore } from '@/stores/index'
-import type { Todo, SortParams } from '../types'
-import { TodoStatus, SortOrder } from '../enums'
-import { sortByProperty } from '../composables/sortList'
+import type { Todo, SortParams } from '@/types'
+import { TodoStatus, SortOrder } from '@/enums'
+import { sortByProperty } from '@/composables/sortList'
 
 const store = useTodoListStore()
 const searchTerm = ref<string>('')

@@ -2,9 +2,9 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import router from '@/router'
 import { createPinia, setActivePinia } from 'pinia'
-import AddTodoItem from '../AddTodoItem.vue'
-import TDInput from '../common/TDInput.vue'
-import TDButton from '../common/TDButton.vue'
+import AddTodoItem from '@/components/AddTodoItem.vue'
+import TDInput from '@/components/common/TDInput.vue'
+import TDButton from '@/components/common/TDButton.vue'
 import { useTodoListStore } from '@/stores/index'
 
 describe('AddTodoItem.vue', () => {

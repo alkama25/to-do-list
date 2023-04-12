@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { useTodoListStore } from '../index'
-import type { Todo } from '/types.ts'
+import { useTodoListStore } from '@/stores/index'
+import type { Todo } from '@/types'
 import { TodoStatus } from '@/enums'
 
 describe('The todo list store', () => {
