@@ -6,5 +6,5 @@
   </div>
 </template>
 <script setup lang="ts">
-import TDButton from '../components/TDButton.vue'
+import TDButton from '../components/common/TDButton.vue'
 </script>

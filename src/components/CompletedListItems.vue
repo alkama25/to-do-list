@@ -36,8 +36,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import TodoItem from './TodoItem.vue'
-import TDIcon from './TDIcon.vue'
-import CustomTransition from '../components/CustomTransition.vue'
+import TDIcon from '../components/common/TDIcon.vue'
+import CustomTransition from '../components/common/CustomTransition.vue'
 import { useTodoListStore } from '@/stores/index'
 import type { Todo } from '../types'
 import { TodoStatus } from '../enums'

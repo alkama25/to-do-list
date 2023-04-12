@@ -38,10 +38,10 @@
 </template>
 <script setup lang="ts">
 import { ref, computed, watch, Transition } from 'vue'
-import TDButton from '../components/TDButton.vue'
-import TDInput from '../components/TDInput.vue'
+import TDButton from '../components/common/TDButton.vue'
+import TDInput from '../components/common/TDInput.vue'
 import TodoItem from '../components/TodoItem.vue'
-import CustomTransition from '../components/CustomTransition.vue'
+import CustomTransition from '../components/common/CustomTransition.vue'
 import { useTodoListStore } from '@/stores/index'
 import type { Todo, SortParams } from '../types'
 import { TodoStatus, SortOrder } from '../enums'

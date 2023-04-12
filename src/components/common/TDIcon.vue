@@ -16,7 +16,7 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
-import { icons } from '../resources/icons'
+import { icons } from '../../resources/icons'
 
 const props = defineProps<{
   name: string

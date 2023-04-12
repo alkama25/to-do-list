@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import TodoItem from './TodoItem.vue'
-import CustomTransition from '../components/CustomTransition.vue'
+import CustomTransition from '../components/common/CustomTransition.vue'
 import { useTodoListStore } from '@/stores/index'
 import type { Todo } from '../types'
 import { TodoStatus } from '../enums'
