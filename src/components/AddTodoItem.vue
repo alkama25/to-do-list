@@ -4,7 +4,6 @@
       class="flex-1"
       :value="todoText"
       @onInput="updateTodoText"
-      data-test-id="add-todo"
     ></TDInput>
     <TDButton
       label="Add Item"

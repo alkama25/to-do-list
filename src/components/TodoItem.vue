@@ -16,10 +16,13 @@
               ? 'text-gray-dark line-through'
               : 'text-black'
           "
+          data-test-id="todo-text"
         >
           {{ props.listItem.text }}
         </p>
-        <p class="text-xs text-gray-dark">{{ useFormattedDate(props.listItem.createdDate) }}</p>
+        <p class="text-xs text-gray-dark" data-test-id="todo-created-date">
+          {{ useFormattedDate(props.listItem.createdDate) }}
+        </p>
       </div>
     </div>
 
@@ -27,6 +30,7 @@
       <div
         class="flex h-8 w-8 items-center justify-center text-gray-dark hover:text-black hover:rounded-full hover:bg-chrome"
         tabindex="0"
+        data-test-id="show-dropdown"
         @click.stop="isDropdownVisible = !isDropdownVisible"
         @blur="isDropdownVisible = false"
       >
@@ -36,6 +40,7 @@
       <div
         v-if="isDropdownVisible"
         class="absolute right-0 z-10 mt-2 origin-top-left rounded bg-white border border-gray-light"
+        data-test-id="dropdown-options"
       >
         <div
           role="menu"
@@ -48,6 +53,7 @@
           <a
             class="w-max flex px-4 py-2 text-sm text-blue"
             role="menuitem"
+            data-test-id="dropdown-menu-item"
             @mousedown.stop.prevent="option.action(props.listItem)"
           >
             {{ option.text }}
